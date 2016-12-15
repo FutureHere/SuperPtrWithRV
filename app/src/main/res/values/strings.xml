@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">SuperPtrWithRV</string>
+    <string name="action_normal">标准</string>
+    <string name="action_empty">空数据</string>
+    <string name="action_pull">下拉刷新</string>
+    <string name="action_loadmore">上拉加载</string>
+    <string name="action_both">全部</string>
+
+
+    <!-- Just use standard Pull Down String when pulling up. These can be set for languages which require it -->
+    <string name="pull_to_refresh_pull_label">下拉刷新数据…</string>
+    <string name="pull_to_refresh_release_label">放开以刷新数据…</string>
+    <string name="pull_to_refresh_refreshing_label">正在载入，请等待…</string>
+    <string name="cube_ptr_refresh_complete">更新完成</string>
+    <string name="cube_ptr_last_update">上次更新:&#160;</string>
+    <string name="cube_ptr_seconds_ago">&#160;秒之前</string>
+    <string name="cube_ptr_minutes_ago">&#160;分钟之前</string>
+    <string name="cube_ptr_hours_ago">&#160;小时之前</string>
+    <string name="cube_views_load_more_loading">加载中...</string>
+    <string name="cube_views_load_more_click_to_load_more">点击加载更多</string>
+    <string name="cube_views_load_more_error">加载失败,点击重试</string>
+    <string name="cube_views_load_more_none">没有更多啦~</string>
+
+    <integer-array name="google_colors">
+        <item>@color/colorPrimary</item>
+        <item>@color/colorPrimary</item>
+        <item>@color/colorPrimary</item>
+        <item>@color/colorPrimary</item>
+    </integer-array>
+
+    <string name="current_mode">当前模式:%s</string>
+</resources>

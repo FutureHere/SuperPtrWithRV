@@ -1,0 +1,32 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+      xmlns:tools="http://schemas.android.com/tools"
+      tools:context="com.leinyo.superptrwithrv.MainActivity">
+    <item
+        android:id="@+id/action_normal"
+        android:orderInCategory="100"
+        android:title="@string/action_normal"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/action_empty"
+        android:orderInCategory="100"
+        android:title="@string/action_empty"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/action_pull"
+        android:orderInCategory="100"
+        android:title="@string/action_pull"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/action_loadmore"
+        android:orderInCategory="100"
+        android:title="@string/action_loadmore"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/action_both"
+        android:orderInCategory="100"
+        android:title="@string/action_both"
+        app:showAsAction="never"/>
+</menu>
