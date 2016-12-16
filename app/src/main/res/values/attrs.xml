@@ -41,5 +41,6 @@
         </attr>
         <attr name="ptr_padding_left" format="integer"/>
         <attr name="ptr_padding_right" format="integer"/>
+        <attr name="ptr_scrollable" format="boolean"/>
     </declare-styleable>
 </resources>

@@ -2,7 +2,6 @@ package com.leinyo.superptrwithrv.widget.ptr;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
@@ -40,7 +39,7 @@ public class PullToRefreshView extends LinearLayout {
     public static final int REFRESH_BOTH = 3;
     private View mHeaderView, mEmptyView;
     private int mPaddingLeft, mPaddingRight;
-    private boolean mIsCheckLogin;
+    private boolean mIsCheckLogin, mIsScrollAble;
 
     public final class HeaderModeConstants {
         static final int MODE_MATERIAL = 0;
@@ -63,6 +62,7 @@ public class PullToRefreshView extends LinearLayout {
         mIsCheckLogin = ta.getBoolean(R.styleable.PullToRefreshView_ptr_check_login, false);
         mPaddingLeft = ta.getInt(R.styleable.PullToRefreshView_ptr_padding_left, 0);
         mPaddingRight = ta.getInt(R.styleable.PullToRefreshView_ptr_padding_right, 0);
+        mIsScrollAble = ta.getBoolean(R.styleable.PullToRefreshView_ptr_scrollable, true);
         ta.recycle();
         setupViews();
     }
@@ -99,11 +99,12 @@ public class PullToRefreshView extends LinearLayout {
         mLoadMoreRecyclerViewContainer = (LoadMoreRecyclerViewContainer) findViewById(R.id.load_more_container);
         mRecyclerView = mLoadMoreRecyclerViewContainer.getRecyclerView();
         mRecyclerView.setPadding(dpTopx(getContext(), mPaddingLeft), 0, dpTopx(getContext(), mPaddingRight), 0);
-
+        mRecyclerView.setVerticalScrollBarEnabled(mIsScrollAble);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(layoutManager);
         setMode(mRefreshMode);
+        buildPullDownView();
     }
 
     @Override
@@ -112,9 +113,7 @@ public class PullToRefreshView extends LinearLayout {
             int getY = (int) ev.getY();
             if (getY + mRecyclerView.getScrollY()
                     < mHeaderView.getMeasuredHeight()) {
-//                if (mHeaderView instanceof View) {
-//                    ((CarouselBanner) mHeaderView).setNestParent(mRecyclerView);
-//                }
+                mPtrFrameLayout.requestDisallowInterceptTouchEvent(true);
             } else {
                 mPtrFrameLayout.requestDisallowInterceptTouchEvent(false);
             }
@@ -145,7 +144,6 @@ public class PullToRefreshView extends LinearLayout {
         if (mRefreshMode == NONE) {
             return;
         }
-        buildPullDownView();
         mPtrFrameLayout.setLoadingMinTime(1000);
 
         mPtrFrameLayout.setPtrHandler(new PtrHandler() {
@@ -190,7 +188,7 @@ public class PullToRefreshView extends LinearLayout {
     }
 
     /**
-     * 逻辑自己写
+     * 是否登录逻辑自己写
      *
      * @return
      */
@@ -199,15 +197,6 @@ public class PullToRefreshView extends LinearLayout {
     }
 
     public void setLayoutManager(final RecyclerView.LayoutManager layoutManager) {
-        if (layoutManager instanceof GridLayoutManager) {
-            ((GridLayoutManager) layoutManager).setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
-                @Override
-                public int getSpanSize(int position) {
-                    return getAdapter().isFooter(position) ?
-                            ((GridLayoutManager) layoutManager).getSpanCount() : 1;
-                }
-            });
-        }
         mRecyclerView.setLayoutManager(layoutManager);
     }
 
