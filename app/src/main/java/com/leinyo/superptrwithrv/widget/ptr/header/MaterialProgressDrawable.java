@@ -41,7 +41,7 @@ import android.view.animation.Interpolator;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.Transformation;
 
-import com.leinyo.superptrwithrv.utils.CommonUtils;
+import com.leinyo.superptrwithrv.widget.ptr.CommonUtils;
 
 import java.util.ArrayList;
 

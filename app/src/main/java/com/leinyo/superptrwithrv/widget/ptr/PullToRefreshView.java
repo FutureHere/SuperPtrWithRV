@@ -17,7 +17,7 @@ import com.leinyo.superptrwithrv.widget.ptr.loadmore.LoadMoreContainer;
 import com.leinyo.superptrwithrv.widget.ptr.loadmore.LoadMoreHandler;
 import com.leinyo.superptrwithrv.widget.ptr.loadmore.LoadMoreRecyclerViewContainer;
 
-import static com.leinyo.superptrwithrv.utils.CommonUtils.dpTopx;
+import static com.leinyo.superptrwithrv.widget.ptr.CommonUtils.dpTopx;
 
 
 /**

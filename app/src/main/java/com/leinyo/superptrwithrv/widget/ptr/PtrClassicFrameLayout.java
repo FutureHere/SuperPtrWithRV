@@ -4,7 +4,6 @@ import android.content.Context;
 import android.util.AttributeSet;
 
 import com.leinyo.superptrwithrv.R;
-import com.leinyo.superptrwithrv.utils.CommonUtils;
 import com.leinyo.superptrwithrv.widget.ptr.header.MaterialHeader;
 
 public class PtrClassicFrameLayout extends PtrFrameLayout {

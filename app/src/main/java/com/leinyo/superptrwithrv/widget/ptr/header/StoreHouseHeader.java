@@ -9,7 +9,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.Transformation;
 
-import com.leinyo.superptrwithrv.utils.CommonUtils;
+import com.leinyo.superptrwithrv.widget.ptr.CommonUtils;
 import com.leinyo.superptrwithrv.widget.ptr.PtrFrameLayout;
 import com.leinyo.superptrwithrv.widget.ptr.PtrUIHandler;
 import com.leinyo.superptrwithrv.widget.ptr.indicator.PtrIndicator;

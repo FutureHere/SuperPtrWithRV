@@ -1,4 +1,4 @@
-package com.leinyo.superptrwithrv.utils;
+package com.leinyo.superptrwithrv.widget.ptr;
 
 import android.content.Context;
 
