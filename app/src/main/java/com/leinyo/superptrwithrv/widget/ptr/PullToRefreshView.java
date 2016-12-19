@@ -104,7 +104,6 @@ public class PullToRefreshView extends LinearLayout {
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(layoutManager);
         setMode(mRefreshMode);
-        buildPullDownView();
     }
 
     @Override
@@ -144,6 +143,9 @@ public class PullToRefreshView extends LinearLayout {
         if (mRefreshMode == NONE) {
             return;
         }
+
+        buildPullDownView();
+
         mPtrFrameLayout.setLoadingMinTime(1000);
 
         mPtrFrameLayout.setPtrHandler(new PtrHandler() {

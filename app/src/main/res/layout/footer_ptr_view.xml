@@ -3,11 +3,11 @@
                 android:id="@+id/layout_load_more"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:minHeight="30dp"
+                android:minHeight="24dp"
                 android:gravity="center_horizontal"
                 android:orientation="horizontal"
-                android:paddingBottom="10dp"
-                android:paddingTop="10dp">
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp">
 
     <ProgressBar
         android:id="@+id/pb_loading_more"
