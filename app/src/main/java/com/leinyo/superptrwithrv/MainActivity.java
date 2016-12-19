@@ -105,6 +105,7 @@ public class MainActivity extends AppCompatActivity implements PullToRefreshView
                 break;
             case R.id.action_empty:
                 mPullView.addEmptyView(mEmpty);
+                mPullView.setPullRefreshListener(this);
                 headTitle = getString(R.string.action_empty);
                 break;
             case R.id.action_pull:
