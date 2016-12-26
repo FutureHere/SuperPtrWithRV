@@ -2,6 +2,7 @@ package com.leinyo.superptrwithrv.widget.ptr;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
@@ -100,6 +101,7 @@ public class PullToRefreshView extends LinearLayout {
         mRecyclerView = mLoadMoreRecyclerViewContainer.getRecyclerView();
         mRecyclerView.setPadding(dpTopx(getContext(), mPaddingLeft), 0, dpTopx(getContext(), mPaddingRight), 0);
         mRecyclerView.setVerticalScrollBarEnabled(mIsScrollAble);
+        mRecyclerView.setHasFixedSize(true);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(layoutManager);
@@ -199,6 +201,15 @@ public class PullToRefreshView extends LinearLayout {
     }
 
     public void setLayoutManager(final RecyclerView.LayoutManager layoutManager) {
+        if (layoutManager instanceof GridLayoutManager) {
+            ((GridLayoutManager) layoutManager).setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+                @Override
+                public int getSpanSize(int position) {
+                    return getAdapter().isFooter(position) || getAdapter().isHeader(position) || getAdapter().isEmpty(position) ?
+                            ((GridLayoutManager) layoutManager).getSpanCount() : 1;
+                }
+            });
+        }
         mRecyclerView.setLayoutManager(layoutManager);
     }
 

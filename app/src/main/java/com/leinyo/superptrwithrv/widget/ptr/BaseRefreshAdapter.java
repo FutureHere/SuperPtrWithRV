@@ -5,9 +5,11 @@ package com.leinyo.superptrwithrv.widget.ptr;
  */
 
 import android.content.Context;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
@@ -60,13 +62,27 @@ public abstract class BaseRefreshAdapter<VH extends RecyclerView.ViewHolder, T> 
         } else if (viewType == TYPE_FOOTER) {
             RecyclerView.LayoutManager layoutManager = mPullToRefreshView.getRecyclerView().getLayoutManager();
             int height = 0;
-            if (layoutManager instanceof LinearLayoutManager) {
-                int count = 0;
+            int count = 0;
+            if (layoutManager instanceof GridLayoutManager) {
+                for (int i = 0; i <= layoutManager.getChildCount() - 1; i++) {
+                    if (((GridLayoutManager) layoutManager).getSpanSizeLookup().getSpanSize(i) == ((GridLayoutManager) layoutManager).getSpanCount() && mPullToRefreshView.getHeaderView().getVisibility() == View.VISIBLE) {
+                        count += layoutManager.getDecoratedMeasuredHeight(layoutManager.getChildAt(i));
+                    } else if (((GridLayoutManager) layoutManager).getSpanSizeLookup().getSpanSize(i) == 1) {
+                        if (i == 0) {
+                            i += 1;
+                        }
+                        if (i % 2 != 0) {
+                            count += layoutManager.getDecoratedMeasuredHeight(layoutManager.getChildAt(i));
+                        }
+                    }
+                }
+            } else if (layoutManager instanceof LinearLayoutManager) {
                 for (int i = 0; i <= layoutManager.getChildCount() - 1; i++) {
                     count += layoutManager.getDecoratedMeasuredHeight(layoutManager.getChildAt(i));
                 }
-                height = mPullToRefreshView.getRecyclerView().getMeasuredHeight() - count;
             }
+            height = mPullToRefreshView.getRecyclerView().getMeasuredHeight() - count;
+
             LoadMoreDefaultFooterView footView = (LoadMoreDefaultFooterView) mPullToRefreshView.getLoadMoreContainer().getFootView();
             RelativeLayout relativeLayout = (RelativeLayout) footView.findViewById(R.id.layout_load_more);
             RelativeLayout.LayoutParams params;
@@ -184,12 +200,16 @@ public abstract class BaseRefreshAdapter<VH extends RecyclerView.ViewHolder, T> 
      * @param position 位置
      * @return 是否为头部布局
      */
-    /**
-     * @param position 位置
-     * @return 是否为头部布局
-     */
     public boolean isHeader(int position) {
         return TYPE_HEADER == getItemViewType(position);
+    }
+
+    /**
+     * @param position 位置
+     * @return 是否为空布局
+     */
+    public boolean isEmpty(int position) {
+        return TYPE_EMPTY == getItemViewType(position);
     }
 }
 
