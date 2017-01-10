@@ -6,8 +6,9 @@ import android.os.Message;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.leinyo.superptrwithrv.R;
@@ -15,7 +16,7 @@ import com.leinyo.superptrwithrv.R;
 import java.lang.ref.WeakReference;
 
 
-public class LoadMoreDefaultFooterView extends RelativeLayout implements LoadMoreUIHandler {
+public class LoadMoreDefaultFooterView extends LinearLayout implements LoadMoreUIHandler {
 
     private TextView mTextView;
     private View mLayout;
@@ -46,6 +47,7 @@ public class LoadMoreDefaultFooterView extends RelativeLayout implements LoadMor
     }
 
     private void setupViews() {
+        setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         LayoutInflater.from(getContext()).inflate(R.layout.footer_ptr_view, this, true);
         mTextView = (TextView) findViewById(R.id.tv_load_more);
         mLayout = findViewById(R.id.layout_load_more);

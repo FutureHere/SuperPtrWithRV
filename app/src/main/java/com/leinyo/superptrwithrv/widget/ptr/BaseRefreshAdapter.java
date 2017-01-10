@@ -11,7 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
+import android.widget.LinearLayout;
 
 import com.leinyo.superptrwithrv.R;
 import com.leinyo.superptrwithrv.widget.ptr.loadmore.LoadMoreDefaultFooterView;
@@ -84,14 +84,14 @@ public abstract class BaseRefreshAdapter<VH extends RecyclerView.ViewHolder, T> 
             height = mPullToRefreshView.getRecyclerView().getMeasuredHeight() - count;
 
             LoadMoreDefaultFooterView footView = (LoadMoreDefaultFooterView) mPullToRefreshView.getLoadMoreContainer().getFootView();
-            RelativeLayout relativeLayout = (RelativeLayout) footView.findViewById(R.id.layout_load_more);
-            RelativeLayout.LayoutParams params;
+            LinearLayout linearLayout = (LinearLayout) footView.findViewById(R.id.layout_load_more);
+            LinearLayout.LayoutParams params;
             if (height > mPullToRefreshView.getLoadMoreContainer().getFootView().getHeight() && height > ((LoadMoreDefaultFooterView) mPullToRefreshView.getLoadMoreContainer().getFootView()).getViewHeight()) {
-                params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, height);
+                params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, height);
             } else {
-                params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ((LoadMoreDefaultFooterView) mPullToRefreshView.getLoadMoreContainer().getFootView()).getViewHeight());
+                params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ((LoadMoreDefaultFooterView) mPullToRefreshView.getLoadMoreContainer().getFootView()).getViewHeight());
             }
-            relativeLayout.setLayoutParams(params);
+            linearLayout.setLayoutParams(params);
             return new RecyclerView.ViewHolder(footView) {
             };
         } else if (viewType == TYPE_HEADER) {

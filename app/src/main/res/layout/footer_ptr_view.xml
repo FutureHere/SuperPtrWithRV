@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/layout_load_more"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minHeight="24dp"
-                android:gravity="center_horizontal"
-                android:orientation="horizontal"
-                android:paddingBottom="8dp"
-                android:paddingTop="8dp">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/layout_load_more"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:gravity="center_horizontal"
+              android:minHeight="24dp"
+              android:orientation="horizontal"
+              android:paddingBottom="8dp"
+              android:paddingTop="8dp">
 
     <ProgressBar
         android:id="@+id/pb_loading_more"
         style="?android:progressBarStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
         android:indeterminate="true"
         />
 
@@ -22,11 +22,10 @@
         android:id="@+id/tv_load_more"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
         android:layout_marginLeft="14dp"
-        android:layout_toRightOf="@+id/pb_loading_more"
         android:gravity="left"
         android:textColor="#666666"
         android:textSize="14sp"/>
 
-</RelativeLayout>
+</LinearLayout>
