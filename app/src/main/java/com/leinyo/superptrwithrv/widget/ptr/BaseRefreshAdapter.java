@@ -140,7 +140,7 @@ public abstract class BaseRefreshAdapter<VH extends RecyclerView.ViewHolder, T> 
             count += 1;
         }
         //Footer显示
-        if (mPullToRefreshView.getLoadMoreContainer().getFootView() != null && mPullToRefreshView.getEmptyView() == null && count > 0) {
+        if (mPullToRefreshView.getLoadMoreContainer().getFootView() != null  && count > 0) {
             count += 1;
         }
         if (mPullToRefreshView.getHeaderView() != null) {
